@@ -1,33 +1,33 @@
+# Original author: @psychopy
+# Contributing author: @ryanku98
 monitor_devices:
     # Video output device
     - Display:
         name: Display
         reporting_unit_type: pix
         device_number: 1
+        # Physical dimensions of display monitor being used
         physical_dimensions:
-            # Physical dimensions of display monitor
-            # Remember that this will differ from device to device
-            width: 1574
-            height: 877
+            width: 1600
+            height: 900
+            # Unit used to specify dimensions
             unit_type: mm
+        # Distance from eye to monitor
         default_eye_distance:
-            surface_center: 1649
+            surface_center: 770
+            # Unit used to specify distance
             unit_type: mm
         psychopy_monitor_name: default
-
     # Keyboard input
     - Keyboard:
         name: Keyboard
-
     # Mouse input
     - Mouse:
         name: mouse
-
     - Experiment:
         name: experimentRuntime
 
     # iView X eyetracker config
-    # Original source: https://github.com/psychopy/psychopy/blob/master/psychopy/demos/coder/iohub/eyetracking/selectTracker/eyetracker_configs/iviewx_config.yaml
     - eyetracker.hw.smi.iviewx.EyeTracker:
         # Load device during experiment runtime
         enable: True
@@ -56,60 +56,36 @@ monitor_devices:
             sampling_rate: 120
             # iViewX supports: LEFT_EYE, RIGHT_EYE, BINOCULAR, BINOCULAR_AVERAGED
             track_eyes: BINOCULAR_AVERAGED
-            # The SMI supports enabling or disabling sample filtering. Use the
-            # Sample stream type 'FILTER_ALL' with a filter level of either
-            # FILTER_OFF or FILTER_ON
+            # Sample filtering
+            # iViewX supports: FILTER_OFF, FILTER_ON
             sample_filtering:
                 FILTER_ALL: FILTER_OFF
-            # VOG settings allow you to specify some eye tracker parameters related to
-            # the image processing or data collection procedure used by the eye tracker
-            # device.
+            # VOG settings allow you to specify some eye tracker parameters related to the image processing or data collection procedure used by the eye device.
             vog_settings:
-                # The iViewX supports one pupil_measure_types parameter that is used
-                # for any eyes being tracked. PUPIL_AREA, PUPIL_DIAMETER are
-                # valid pupil measure types for the iViewX.
-                # PUPIL_DIAMETER, PUPIL_DIAMETER_MM,
+                # Used for any eyes being tracked
+                # iViewX supports: PUPIL_AREA, PUPIL_DIAMETER
                 pupil_measure_types: PUPIL_DIAMETER
         calibration:
             # iViewX supports the following calibration type constants:
             type: FIVE_POINTS
-
             # Auto pace refers to automatic progress from one calibration point to the next
-            # If no, manual key press is needed to progress
+            # If No, manual key press is needed to progress
             auto_pace: Yes
-
-            # pacing_speed represents how long a calibration point should
-            # be displayed before moving onto the next point when auto_pace
-            # is set to true. iViewX supports two values for this field: FAST and SLOW
-            # If auto_pace is False, pacing_speed is ignored.
+            # Length of time calibration point is displayed before next point is shown when auto_pace --> Yes; ignored otherwise
             pacing_speed: FAST
-
-            # For the iView system, screen_background_color specifies a greyscale
-            # value (0 - 255) that gets used to dpecify the brightness of the calibration screen.
+            # Greyscale value from 0 ~ 255 --> specifies brightness of calibration screen
             screen_background_color: 20
-
-            # target type defines what form of calibration graphic should be used
-            # during calibration, validation, etc. modes.
-            # The iView ioHub eye tracker implementation supports the following
-            # target types CIRCLE_TARGET, CROSSHAIR_TARGET, IMAGE_TARGET
+            # Calibration target types
+            # iViewX supports: CIRCLE_TARGET, CROSSHAIR_TARGET, IMAGE_TARGET
             target_type: CIRCLE_TARGET
-
-            # The associated target attributes sub properties must be supplied
-            # for the given target_type. If target type attribute sections are provided
-            # for target types other than the entry associated with the specified target_type value
-            # they will simple be ignored.
+            # Associated target attributes
             target_attributes:
                 target_size: 30
                 target_color: 239
                 target_inner_color: RED
-
-            # Should a Window showing the validation accuracy as a gaze point
-            # overlay be displayed following a validation procedure?
+            # Show validation accuracy window overlay after validation procedure
             show_validation_accuracy_window: True
-
-        # The model_name setting allows the definition of the eye tracker model being used.
-        # For the iViewX implementation, valid values are:
-        # RED, REDm, HiSpeed, MRI, HED, ETG, or Custom
+        # Current iViewX models include: RED, REDm, HiSpeed, MRI, HED, ETG, or Custom
         model_name: REDm
 
 data_store:
