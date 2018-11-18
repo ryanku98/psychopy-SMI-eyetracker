@@ -1,0 +1,5 @@
+# ignore personal todo list
+/Todo.txt
+
+# ignore PsychoPy Experiments
+Tests/
