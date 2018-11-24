@@ -1,0 +1,4 @@
+1. Eye tracking setup
+    a. Create a new routine specifically to setup the eye tracking equipment
+    b. Create a new code component (found under Custom components)
+    c. Paste the code found in "eyetracker_setup_begin_experiment.py" in the Begin Experiment tab
