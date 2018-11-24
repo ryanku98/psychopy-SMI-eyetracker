@@ -27,7 +27,7 @@ monitor_devices:
     - Experiment:
         name: experimentRuntime
 
-    # iView X eyetracker config
+    # iViewX eyetracker config
     - eyetracker.hw.smi.iviewx.EyeTracker:
         # Load device during experiment runtime
         enable: True
@@ -90,3 +90,9 @@ monitor_devices:
 
 data_store:
     enable: True
+    # Needed for PsychoPy to differentiate experiments
+    experiment_info:
+        # Title may be anything you want
+        title: I just want this to work
+    session_info:
+        code: Please_work
